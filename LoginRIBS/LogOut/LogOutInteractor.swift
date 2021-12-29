@@ -11,7 +11,6 @@ import RxSwift
 protocol LogOutRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
     func routeToSignIn()
-    func routeToLogIn()
 }
 
 protocol LogOutPresentable: Presentable {
@@ -21,6 +20,7 @@ protocol LogOutPresentable: Presentable {
 
 protocol LogOutListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func routeToLogIn()
 }
 
 final class LogOutInteractor: PresentableInteractor<LogOutPresentable>, LogOutInteractable, LogOutPresentableListener {
@@ -60,6 +60,6 @@ final class LogOutInteractor: PresentableInteractor<LogOutPresentable>, LogOutIn
     }
     
     func logInSuccess() {
-        router?.routeToLogIn()
+        listener?.routeToLogIn()
     }
 }

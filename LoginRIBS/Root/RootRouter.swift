@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol RootInteractable: Interactable {
+protocol RootInteractable: Interactable, LogOutListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }

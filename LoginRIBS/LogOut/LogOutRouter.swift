@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol LogOutInteractable: Interactable {
+protocol LogOutInteractable: Interactable, SignUpListener {
     var router: LogOutRouting? { get set }
     var listener: LogOutListener? { get set }
 }
@@ -18,16 +18,26 @@ protocol LogOutViewControllable: ViewControllable {
 
 final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControllable>, LogOutRouting {
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: LogOutInteractable, viewController: LogOutViewControllable) {
+    init(interactor: LogOutInteractable, viewController: LogOutViewControllable, signUpBuilder: SignUpBuildable) {
+        self.signUpBuilder = signUpBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
     
     func routeToSignIn() {
-        viewController.uiviewController.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        let signUp = signUpBuilder.build(withListener: interactor)
+        self.currentChild = signUp
+        attachChild(signUp)
+        viewController.uiviewController.present(signUp.viewControllable.uiviewController, animated: true, completion: nil)
     }
+
+    private let signUpBuilder: SignUpBuildable
+
+    private var currentChild: ViewableRouting?
     
-    func routeToLogIn() {
-        viewController.uiviewController.dismiss(animated: true, completion: nil)
+    private func detachCurrentChild() {
+        if let currentChild = currentChild {
+            detachChild(currentChild)
+        }
     }
 }
