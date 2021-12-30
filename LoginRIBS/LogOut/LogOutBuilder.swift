@@ -12,7 +12,7 @@ protocol LogOutDependency: Dependency {
     // created by this RIB.
 }
 
-final class LogOutComponent: Component<LogOutDependency> {
+final class LogOutComponent: Component<LogOutDependency>, SignUpDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -34,6 +34,9 @@ final class LogOutBuilder: Builder<LogOutDependency>, LogOutBuildable {
         let viewController = LogOutViewController()
         let interactor = LogOutInteractor(presenter: viewController)
         interactor.listener = listener
-        return LogOutRouter(interactor: interactor, viewController: viewController)
+        
+        let signUpBuilder = SignUpBuilder(dependency: component)
+        
+        return LogOutRouter(interactor: interactor, viewController: viewController, signUpBuilder: signUpBuilder)
     }
 }

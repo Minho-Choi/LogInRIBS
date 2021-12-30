@@ -21,7 +21,7 @@ protocol LogOutPresentableListener: AnyObject {
     // interactor class.
     func logIn(id: String, password: String) -> LogInResult
     func signInTapped()
-    func logInSuccess()
+    func logInSuccess(id: String)
 }
 
 final class LogOutViewController: UIViewController, LogOutPresentable, LogOutViewControllable {
@@ -54,7 +54,7 @@ final class LogOutViewController: UIViewController, LogOutPresentable, LogOutVie
                 return
             case .succes:
                 statusLabel.text = " "
-                listener?.logInSuccess()
+                listener?.logInSuccess(id: id)
             case .none:
                 assertionFailure("LogOutViewController Listener Empty")
         }

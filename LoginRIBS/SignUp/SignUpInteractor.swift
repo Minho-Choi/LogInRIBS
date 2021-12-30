@@ -20,6 +20,7 @@ protocol SignUpPresentable: Presentable {
 
 protocol SignUpListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func detachSignUp()
 }
 
 final class SignUpInteractor: PresentableInteractor<SignUpPresentable>, SignUpInteractable, SignUpPresentableListener {
@@ -57,5 +58,6 @@ final class SignUpInteractor: PresentableInteractor<SignUpPresentable>, SignUpIn
     
     func signUpDidEnded() {
         router?.dismiss()
+        listener?.detachSignUp()
     }
 }

@@ -13,6 +13,13 @@ protocol LogInDependency: Dependency {
 }
 
 final class LogInComponent: Component<LogInDependency> {
+    
+    let id: String
+    
+    init(dependency: LogInDependency, id: String) {
+        self.id = id
+        super.init(dependency: dependency)
+    }
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -20,7 +27,7 @@ final class LogInComponent: Component<LogInDependency> {
 // MARK: - Builder
 
 protocol LogInBuildable: Buildable {
-    func build(withListener listener: LogInListener) -> LogInRouting
+    func build(withListener listener: LogInListener, id: String) -> LogInRouting
 }
 
 final class LogInBuilder: Builder<LogInDependency>, LogInBuildable {
@@ -29,10 +36,10 @@ final class LogInBuilder: Builder<LogInDependency>, LogInBuildable {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: LogInListener) -> LogInRouting {
-        let component = LogInComponent(dependency: dependency)
+    func build(withListener listener: LogInListener, id: String) -> LogInRouting {
+        let component = LogInComponent(dependency: dependency, id: id)
         let viewController = LogInViewController()
-        let interactor = LogInInteractor(presenter: viewController)
+        let interactor = LogInInteractor(presenter: viewController, id: id)
         interactor.listener = listener
         return LogInRouter(interactor: interactor, viewController: viewController)
     }

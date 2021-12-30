@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogOutViewController">
             <connections>
                 <outlet property="idTextField" destination="F1J-Jr-k08" id="Tpf-TK-Yla"/>
-                <outlet property="logInButtonDidTapped" destination="ZfN-No-E4O" id="Lbk-Xx-jTS"/>
                 <outlet property="pwTextField" destination="ofk-A7-WNo" id="HTS-Pf-O1M"/>
                 <outlet property="statusLabel" destination="plt-KG-vtQ" id="jPJ-Ia-AKf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="jYO-eb-xeE"/>

@@ -26,5 +26,6 @@ final class SignUpRouter: ViewableRouter<SignUpInteractable, SignUpViewControlla
     
     func dismiss() {
         viewController.uiviewController.dismiss(animated: true, completion: nil)
+        
     }
 }

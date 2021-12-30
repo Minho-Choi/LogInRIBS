@@ -30,6 +30,10 @@ final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControlla
         attachChild(signUp)
         viewController.uiviewController.present(signUp.viewControllable.uiviewController, animated: true, completion: nil)
     }
+    
+    func detachSignUp() {
+        detachCurrentChild()
+    }
 
     private let signUpBuilder: SignUpBuildable
 
