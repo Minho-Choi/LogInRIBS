@@ -10,7 +10,7 @@ import RxSwift
 
 protocol LogOutRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-    func routeToSignIn()
+    func routeToSignUp()
     func detachSignUp()
 }
 
@@ -57,7 +57,7 @@ final class LogOutInteractor: PresentableInteractor<LogOutPresentable>, LogOutIn
     }
     
     func signInTapped() {
-        router?.routeToSignIn()
+        router?.routeToSignUp()
     }
     
     func logInSuccess(id: String) {

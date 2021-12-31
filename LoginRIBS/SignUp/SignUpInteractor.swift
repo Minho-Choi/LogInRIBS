@@ -10,7 +10,6 @@ import RxSwift
 
 protocol SignUpRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-    func dismiss()
 }
 
 protocol SignUpPresentable: Presentable {
@@ -57,7 +56,6 @@ final class SignUpInteractor: PresentableInteractor<SignUpPresentable>, SignUpIn
     }
     
     func signUpDidEnded() {
-        router?.dismiss()
         listener?.detachSignUp()
     }
 }

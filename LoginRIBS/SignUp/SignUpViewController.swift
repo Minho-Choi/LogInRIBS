@@ -51,4 +51,8 @@ final class SignUpViewController: UIViewController, SignUpPresentable, SignUpVie
             return
         }
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        listener?.signUpDidEnded()
+    }
 }

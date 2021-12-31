@@ -31,6 +31,7 @@
 		25A5D829277C47F5004FBD77 /* LogOutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A5D824277C47F5004FBD77 /* LogOutInteractor.swift */; };
 		25A5D82A277C47F5004FBD77 /* LogOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A5D825277C47F5004FBD77 /* LogOutViewController.xib */; };
 		25A5D82D277C484A004FBD77 /* UserDefaultsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A5D82C277C484A004FBD77 /* UserDefaultsWorker.swift */; };
+		25A61704277E9DBE00CC68DC /* ViewControllable+Navigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A61703277E9DBE00CC68DC /* ViewControllable+Navigate.swift */; };
 		A1C792822382015362B90B45 /* Pods_LoginRIBS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179F7CD72A867228AF6C872C /* Pods_LoginRIBS.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		25A5D824277C47F5004FBD77 /* LogOutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutInteractor.swift; sourceTree = "<group>"; };
 		25A5D825277C47F5004FBD77 /* LogOutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogOutViewController.xib; sourceTree = "<group>"; };
 		25A5D82C277C484A004FBD77 /* UserDefaultsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWorker.swift; sourceTree = "<group>"; };
+		25A61703277E9DBE00CC68DC /* ViewControllable+Navigate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewControllable+Navigate.swift"; sourceTree = "<group>"; };
 		5AB3F98C8BDAB1B1829DD830 /* Pods-LoginRIBS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginRIBS.debug.xcconfig"; path = "Target Support Files/Pods-LoginRIBS/Pods-LoginRIBS.debug.xcconfig"; sourceTree = "<group>"; };
 		F8B990A492B11DF06EA2318E /* Pods-LoginRIBS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginRIBS.release.xcconfig"; path = "Target Support Files/Pods-LoginRIBS/Pods-LoginRIBS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 				25A5D81F277C4792004FBD77 /* SignUp */,
 				25A5D82B277C47FA004FBD77 /* LogOut */,
 				25A5D82C277C484A004FBD77 /* UserDefaultsWorker.swift */,
+				25A61703277E9DBE00CC68DC /* ViewControllable+Navigate.swift */,
 			);
 			path = LoginRIBS;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				25A5D80F277C4750004FBD77 /* LogInViewController.swift in Sources */,
 				25A5D82D277C484A004FBD77 /* UserDefaultsWorker.swift in Sources */,
 				25A5D811277C4750004FBD77 /* LogInInteractor.swift in Sources */,
+				25A61704277E9DBE00CC68DC /* ViewControllable+Navigate.swift in Sources */,
 				25A5D81C277C4785004FBD77 /* SignUpInteractor.swift in Sources */,
 				25A5D827277C47F5004FBD77 /* LogOutViewController.swift in Sources */,
 				25A5D7D6277C43DF004FBD77 /* AppDelegate.swift in Sources */,

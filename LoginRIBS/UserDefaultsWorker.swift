@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RIBs
 
 protocol UserDefaultsWorkerProtocol {
     func read(id: String) -> String?
     func write(id: String, password: String)
 }
 
-class UserDefaultsWorker: UserDefaultsWorkerProtocol {
+class UserDefaultsWorker: Worker, UserDefaultsWorkerProtocol {
     
     func read(id: String) -> String? {
         return UserDefaults.standard.string(forKey: id)

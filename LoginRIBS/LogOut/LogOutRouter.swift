@@ -12,7 +12,7 @@ protocol LogOutInteractable: Interactable, SignUpListener {
     var listener: LogOutListener? { get set }
 }
 
-protocol LogOutViewControllable: ViewControllable {
+protocol LogOutViewControllable: NavigateViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
@@ -24,11 +24,12 @@ final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControlla
         interactor.router = self
     }
     
-    func routeToSignIn() {
+    func routeToSignUp() {
         let signUp = signUpBuilder.build(withListener: interactor)
         self.currentChild = signUp
         attachChild(signUp)
-        viewController.uiviewController.present(signUp.viewControllable.uiviewController, animated: true, completion: nil)
+        // show
+        viewController.presentViewController(viewController: signUp.viewControllable)
     }
     
     func detachSignUp() {
@@ -41,6 +42,8 @@ final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControlla
     
     private func detachCurrentChild() {
         if let currentChild = currentChild {
+            // dismiss
+            viewController.dismissViewController(viewController: currentChild.viewControllable)
             detachChild(currentChild)
         }
     }

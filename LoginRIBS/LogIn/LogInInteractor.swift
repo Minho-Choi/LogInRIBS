@@ -19,6 +19,7 @@ protocol LogInPresentable: Presentable {
 
 protocol LogInListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func dismissAndShowLogOut()
 }
 
 final class LogInInteractor: PresentableInteractor<LogInPresentable>, LogInInteractable, LogInPresentableListener {
@@ -48,5 +49,9 @@ final class LogInInteractor: PresentableInteractor<LogInPresentable>, LogInInter
     
     func getID() -> String {
         return id
+    }
+    
+    func viewDidDisappear() {
+        listener?.dismissAndShowLogOut()
     }
 }

@@ -14,6 +14,7 @@ protocol LogInPresentableListener: AnyObject {
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
     func getID() -> String
+    func viewDidDisappear()
 }
 
 final class LogInViewController: UIViewController, LogInPresentable, LogInViewControllable {
@@ -26,6 +27,11 @@ final class LogInViewController: UIViewController, LogInPresentable, LogInViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         helloLabel.text = "hello, \(listener?.getID() ?? "ERROR")"
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        listener?.viewDidDisappear()
     }
     
 }

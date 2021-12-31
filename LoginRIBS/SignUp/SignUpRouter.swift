@@ -23,9 +23,4 @@ final class SignUpRouter: ViewableRouter<SignUpInteractable, SignUpViewControlla
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
-    
-    func dismiss() {
-        viewController.uiviewController.dismiss(animated: true, completion: nil)
-        
-    }
 }

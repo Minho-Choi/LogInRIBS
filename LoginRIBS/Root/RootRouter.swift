@@ -22,6 +22,7 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
     private let logInBuilder: LogInBuildable
     
     private var loggedOut: ViewableRouting?
+    private var loggedIn: ViewableRouting?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: RootInteractable,
@@ -32,12 +33,13 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         self.logInBuilder = logInBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+        viewController.uiviewController.modalPresentationStyle = .fullScreen
     }
     
     override func didLoad() {
         routeToLogOut()
     }
-    
+
     func routeToLogIn(id: String) {
         if let loggedOut = loggedOut {
             detachChild(loggedOut)
@@ -46,14 +48,23 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         }
         
         let loggedIn = logInBuilder.build(withListener: interactor, id: id)
+        self.loggedIn = loggedIn
         attachChild(loggedIn)
+        viewController.uiviewController.modalPresentationStyle = .fullScreen
         viewController.uiviewController.present(loggedIn.viewControllable.uiviewController, animated: true, completion: nil)
     }
     
-    private func routeToLogOut() {
+    func routeToLogOut() {
+        if let loggedIn = loggedIn {
+            detachChild(loggedIn)
+            loggedIn.viewControllable.uiviewController.dismiss(animated: true, completion: nil)
+            self.loggedIn = nil
+        }
         let loggedOut = logOutBuilder.build(withListener: interactor)
         self.loggedOut = loggedOut
         attachChild(loggedOut)
+        viewController.uiviewController.modalPresentationStyle = .fullScreen
+
         viewController.uiviewController.present(loggedOut.viewControllable.uiviewController, animated: true, completion: nil)
     }
     
