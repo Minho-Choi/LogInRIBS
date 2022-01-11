@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251F2BAF278D7E1100AD9F0D /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 251F2BAE278D7E1100AD9F0D /* test.html */; };
 		2551000B278BC91900A74D47 /* ARouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510007278BC91900A74D47 /* ARouter.swift */; };
 		2551000C278BC91900A74D47 /* AViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510008278BC91900A74D47 /* AViewController.swift */; };
 		2551000D278BC91900A74D47 /* ABuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510009278BC91900A74D47 /* ABuilder.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		179F7CD72A867228AF6C872C /* Pods_LoginRIBS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginRIBS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		251F2BAE278D7E1100AD9F0D /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		25510007278BC91900A74D47 /* ARouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARouter.swift; sourceTree = "<group>"; };
 		25510008278BC91900A74D47 /* AViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AViewController.swift; sourceTree = "<group>"; };
 		25510009278BC91900A74D47 /* ABuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABuilder.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				25A5D7E0277C43E1004FBD77 /* LaunchScreen.storyboard */,
 				25A5D7DE277C43E1004FBD77 /* Assets.xcassets */,
 				25A5D7E3277C43E1004FBD77 /* Info.plist */,
+				251F2BAE278D7E1100AD9F0D /* test.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				25A5D81D277C4785004FBD77 /* SignUpViewController.xib in Resources */,
 				25A5D82A277C47F5004FBD77 /* LogOutViewController.xib in Resources */,
+				251F2BAF278D7E1100AD9F0D /* test.html in Resources */,
 				25A5D812277C4750004FBD77 /* LogInViewController.xib in Resources */,
 				25A5D7E2277C43E1004FBD77 /* LaunchScreen.storyboard in Resources */,
 				25A5D7DF277C43E1004FBD77 /* Assets.xcassets in Resources */,
