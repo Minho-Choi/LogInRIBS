@@ -4,12 +4,15 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController">
             <connections>
+                <outlet property="contentView" destination="Hsb-Yx-PLv" id="gUv-po-2ua"/>
                 <outlet property="helloLabel" destination="Y6A-eQ-H2q" id="Wkf-hM-mWq"/>
+                <outlet property="tabBar" destination="Ltz-cC-qdj" id="J7n-6Z-zNL"/>
                 <outlet property="view" destination="iN0-l3-epB" id="jYO-eb-xeE"/>
             </connections>
         </placeholder>
@@ -19,20 +22,45 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6A-eQ-H2q">
-                    <rect key="frame" x="40" y="323" width="295" height="21"/>
+                    <rect key="frame" x="40" y="73" width="295" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltz-cC-qdj">
+                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <items>
+                        <tabBarItem title="A" id="h8r-sS-mRh"/>
+                        <tabBarItem title="B" id="hDe-tZ-gl9"/>
+                        <tabBarItem title="C" id="kpL-lv-Evu"/>
+                    </items>
+                </tabBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsb-Yx-PLv">
+                    <rect key="frame" x="0.0" y="102" width="375" height="516"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Hsb-Yx-PLv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1I7-kl-65m"/>
                 <constraint firstItem="Y6A-eQ-H2q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="7qe-UD-O75"/>
-                <constraint firstItem="Y6A-eQ-H2q" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LR9-zk-X7d"/>
+                <constraint firstItem="Y6A-eQ-H2q" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-250" id="LR9-zk-X7d"/>
+                <constraint firstItem="Ltz-cC-qdj" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="NZx-Gx-7Bw"/>
+                <constraint firstItem="Hsb-Yx-PLv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dIT-YV-Zxn"/>
+                <constraint firstItem="Ltz-cC-qdj" firstAttribute="top" secondItem="Hsb-Yx-PLv" secondAttribute="bottom" id="kGJ-hQ-PJ1"/>
+                <constraint firstItem="Ltz-cC-qdj" firstAttribute="leading" secondItem="Hsb-Yx-PLv" secondAttribute="leading" id="ofU-ll-n6K"/>
+                <constraint firstItem="Ltz-cC-qdj" firstAttribute="trailing" secondItem="Hsb-Yx-PLv" secondAttribute="trailing" id="rZu-xA-2lC"/>
+                <constraint firstItem="Hsb-Yx-PLv" firstAttribute="top" secondItem="Y6A-eQ-H2q" secondAttribute="bottom" constant="8" symbolic="YES" id="vBU-aA-dSD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Y6A-eQ-H2q" secondAttribute="trailing" constant="40" id="vZO-xI-H43"/>
             </constraints>
-            <point key="canvasLocation" x="-110" y="16"/>
+            <point key="canvasLocation" x="-111.2" y="15.742128935532236"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -28,7 +28,6 @@ final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControlla
         let signUp = signUpBuilder.build(withListener: interactor)
         self.currentChild = signUp
         attachChild(signUp)
-        // show
         viewController.presentViewController(viewController: signUp.viewControllable)
     }
     
@@ -42,7 +41,6 @@ final class LogOutRouter: ViewableRouter<LogOutInteractable, LogOutViewControlla
     
     private func detachCurrentChild() {
         if let currentChild = currentChild {
-            // dismiss
             viewController.dismissViewController(viewController: currentChild.viewControllable)
             detachChild(currentChild)
         }

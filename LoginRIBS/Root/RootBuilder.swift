@@ -38,13 +38,16 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
 
     func build() -> LaunchRouting {
         let viewController = RootViewController()
-        viewController.modalPresentationStyle = .fullScreen
         let component = RootComponent(dependency: dependency, rootViewController: viewController)
         let interactor = RootInteractor(presenter: viewController)
         
         let loggedOutBuilder = LogOutBuilder(dependency: component)
         let loggedInBuilder = LogInBuilder(dependency: component)
 
-        return RootRouter(interactor: interactor, viewController: viewController, logOutBuilder: loggedOutBuilder, logInBuilder: loggedInBuilder)
+        return RootRouter(interactor: interactor,
+                          viewController: viewController,
+                          logOutBuilder: loggedOutBuilder,
+                          logInBuilder: loggedInBuilder)
+        
     }
 }

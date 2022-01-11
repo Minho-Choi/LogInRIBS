@@ -12,7 +12,7 @@ protocol SignUpInteractable: Interactable {
     var listener: SignUpListener? { get set }
 }
 
-protocol SignUpViewControllable: ViewControllable {
+protocol SignUpViewControllable: NavigateViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 

@@ -6,13 +6,14 @@
 //
 
 import RIBs
+import WebKit
 
 protocol RootInteractable: Interactable, LogOutListener, LogInListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
 
-protocol RootViewControllable: ViewControllable {
+protocol RootViewControllable: NavigateViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
@@ -22,7 +23,7 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
     private let logInBuilder: LogInBuildable
     
     private var loggedOut: ViewableRouting?
-    private var loggedIn: ViewableRouting?
+    private var loggedIn: (router: LogInRouting, actionableItem: LogInActionableItem)?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: RootInteractable,
@@ -33,39 +34,41 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         self.logInBuilder = logInBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
-        viewController.uiviewController.modalPresentationStyle = .fullScreen
     }
     
     override func didLoad() {
         routeToLogOut()
     }
 
-    func routeToLogIn(id: String) {
+    func routeToLogIn(id: String) -> LogInActionableItem {
         if let loggedOut = loggedOut {
+            viewController.dismissViewController(viewController: loggedOut.viewControllable)
             detachChild(loggedOut)
-            loggedOut.viewControllable.uiviewController.dismiss(animated: true, completion: nil)
             self.loggedOut = nil
         }
-        
-        let loggedIn = logInBuilder.build(withListener: interactor, id: id)
-        self.loggedIn = loggedIn
-        attachChild(loggedIn)
-        viewController.uiviewController.modalPresentationStyle = .fullScreen
-        viewController.uiviewController.present(loggedIn.viewControllable.uiviewController, animated: true, completion: nil)
+        loggedIn = logInBuilder.build(withListener: interactor, id: id)
+        guard let loggedIn = loggedIn else {
+            fatalError("failed to allocate rib")
+        }
+        attachChild(loggedIn.router)
+        viewController.presentViewController(viewController: loggedIn.router.viewControllable)
+        return loggedIn.actionableItem
     }
     
     func routeToLogOut() {
         if let loggedIn = loggedIn {
-            detachChild(loggedIn)
-            loggedIn.viewControllable.uiviewController.dismiss(animated: true, completion: nil)
+            detachChild(loggedIn.router)
+            viewController.dismissViewController(viewController: loggedIn.router.viewControllable)
             self.loggedIn = nil
         }
         let loggedOut = logOutBuilder.build(withListener: interactor)
         self.loggedOut = loggedOut
         attachChild(loggedOut)
-        viewController.uiviewController.modalPresentationStyle = .fullScreen
-
-        viewController.uiviewController.present(loggedOut.viewControllable.uiviewController, animated: true, completion: nil)
+        viewController.presentViewController(viewController: loggedOut.viewControllable)
+    }
+    
+    func configureWebView() {
+        
     }
     
 }

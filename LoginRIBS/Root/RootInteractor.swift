@@ -7,10 +7,11 @@
 
 import RIBs
 import RxSwift
+import os
 
 protocol RootRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-    func routeToLogIn(id: String)
+    func routeToLogIn(id: String) -> LogInActionableItem
     func routeToLogOut()
 }
 
@@ -23,10 +24,12 @@ protocol RootListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteractable, RootPresentableListener {
+final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteractable, RootPresentableListener, RootActionableItem {
 
     weak var router: RootRouting?
     weak var listener: RootListener?
+    private let loggedInActionableItemSubject = ReplaySubject<LogInActionableItem>.create(bufferSize: 1)
+    private var isLoggedIn: Bool = false
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
@@ -46,10 +49,21 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
     }
     
     func routeToLogIn(id: String) {
-        router?.routeToLogIn(id: id)
+        isLoggedIn = true
+        let loggedInActionableItem = router?.routeToLogIn(id: id)
+        if let loggedInActionableItem = loggedInActionableItem {
+            loggedInActionableItemSubject.onNext(loggedInActionableItem)
+        }
     }
     
     func dismissAndShowLogOut() {
+        isLoggedIn = false
         router?.routeToLogOut()
+    }
+    
+    func waitForLogin() -> Observable<(LogInActionableItem, ())> {
+        return loggedInActionableItemSubject.map { (loggedInItem: LogInActionableItem) -> (LogInActionableItem, ()) in
+            (loggedInItem, ())
+        }
     }
 }

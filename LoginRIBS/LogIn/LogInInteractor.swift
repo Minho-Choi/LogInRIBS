@@ -10,6 +10,8 @@ import RxSwift
 
 protocol LogInRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func addRiblet(for name: String) -> ViewControllable?
+    func removeCurrentRiblet()
 }
 
 protocol LogInPresentable: Presentable {
@@ -22,7 +24,7 @@ protocol LogInListener: AnyObject {
     func dismissAndShowLogOut()
 }
 
-final class LogInInteractor: PresentableInteractor<LogInPresentable>, LogInInteractable, LogInPresentableListener {
+final class LogInInteractor: PresentableInteractor<LogInPresentable>, LogInInteractable, LogInPresentableListener, LogInActionableItem{
 
     weak var router: LogInRouting?
     weak var listener: LogInListener?
@@ -51,7 +53,12 @@ final class LogInInteractor: PresentableInteractor<LogInPresentable>, LogInInter
         return id
     }
     
+    func getView(for tab: String) -> ViewControllable? {
+        return router?.addRiblet(for: tab)
+    }
+    
     func viewDidDisappear() {
+        router?.removeCurrentRiblet()
         listener?.dismissAndShowLogOut()
     }
 }

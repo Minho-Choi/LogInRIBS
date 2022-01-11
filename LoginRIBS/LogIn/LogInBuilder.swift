@@ -12,7 +12,7 @@ protocol LogInDependency: Dependency {
     // created by this RIB.
 }
 
-final class LogInComponent: Component<LogInDependency> {
+final class LogInComponent: Component<LogInDependency>, ADependency, BDependency, CDependency {
     
     let id: String
     
@@ -27,7 +27,7 @@ final class LogInComponent: Component<LogInDependency> {
 // MARK: - Builder
 
 protocol LogInBuildable: Buildable {
-    func build(withListener listener: LogInListener, id: String) -> LogInRouting
+    func build(withListener listener: LogInListener, id: String) -> (router: LogInRouting, actionableItem: LogInActionableItem)
 }
 
 final class LogInBuilder: Builder<LogInDependency>, LogInBuildable {
@@ -36,11 +36,22 @@ final class LogInBuilder: Builder<LogInDependency>, LogInBuildable {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: LogInListener, id: String) -> LogInRouting {
+    func build(withListener listener: LogInListener, id: String) -> (router: LogInRouting, actionableItem: LogInActionableItem) {
         let component = LogInComponent(dependency: dependency, id: id)
         let viewController = LogInViewController()
         let interactor = LogInInteractor(presenter: viewController, id: id)
         interactor.listener = listener
-        return LogInRouter(interactor: interactor, viewController: viewController)
+        
+        let aBuilder = ABuilder(dependency: component)
+        let bBuilder = BBuilder(dependency: component)
+        let cBuilder = CBuilder(dependency: component)
+        
+        let router = LogInRouter(
+            interactor: interactor,
+            viewController: viewController,
+            aBuilder: aBuilder, bBuilder: bBuilder, cBuilder: cBuilder)
+        
+        
+        return (router, interactor)
     }
 }
