@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		251F2BAF278D7E1100AD9F0D /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 251F2BAE278D7E1100AD9F0D /* test.html */; };
+		251F2BBD278D804000AD9F0D /* WebViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251F2BB9278D804000AD9F0D /* WebViewRouter.swift */; };
+		251F2BBE278D804000AD9F0D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251F2BBA278D804000AD9F0D /* WebViewViewController.swift */; };
+		251F2BBF278D804000AD9F0D /* WebViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251F2BBB278D804000AD9F0D /* WebViewBuilder.swift */; };
+		251F2BC0278D804000AD9F0D /* WebViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251F2BBC278D804000AD9F0D /* WebViewInteractor.swift */; };
 		2551000B278BC91900A74D47 /* ARouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510007278BC91900A74D47 /* ARouter.swift */; };
 		2551000C278BC91900A74D47 /* AViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510008278BC91900A74D47 /* AViewController.swift */; };
 		2551000D278BC91900A74D47 /* ABuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25510009278BC91900A74D47 /* ABuilder.swift */; };
@@ -53,6 +57,10 @@
 /* Begin PBXFileReference section */
 		179F7CD72A867228AF6C872C /* Pods_LoginRIBS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginRIBS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251F2BAE278D7E1100AD9F0D /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		251F2BB9278D804000AD9F0D /* WebViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRouter.swift; sourceTree = "<group>"; };
+		251F2BBA278D804000AD9F0D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		251F2BBB278D804000AD9F0D /* WebViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewBuilder.swift; sourceTree = "<group>"; };
+		251F2BBC278D804000AD9F0D /* WebViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewInteractor.swift; sourceTree = "<group>"; };
 		25510007278BC91900A74D47 /* ARouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARouter.swift; sourceTree = "<group>"; };
 		25510008278BC91900A74D47 /* AViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AViewController.swift; sourceTree = "<group>"; };
 		25510009278BC91900A74D47 /* ABuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABuilder.swift; sourceTree = "<group>"; };
@@ -110,6 +118,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		251F2BB8278D801F00AD9F0D /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				251F2BB9278D804000AD9F0D /* WebViewRouter.swift */,
+				251F2BBA278D804000AD9F0D /* WebViewViewController.swift */,
+				251F2BBB278D804000AD9F0D /* WebViewBuilder.swift */,
+				251F2BBC278D804000AD9F0D /* WebViewInteractor.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		2551000F278BC92100A74D47 /* A */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +196,7 @@
 				2551000F278BC92100A74D47 /* A */,
 				25510018278BC93400A74D47 /* B */,
 				25510021278BC94600A74D47 /* C */,
+				251F2BB8278D801F00AD9F0D /* WebView */,
 			);
 			path = LoginRIBS;
 			sourceTree = "<group>";
@@ -388,12 +408,14 @@
 				25A5D7F0277C44D8004FBD77 /* RootInteractor.swift in Sources */,
 				25A5D81B277C4785004FBD77 /* SignUpBuilder.swift in Sources */,
 				2551000D278BC91900A74D47 /* ABuilder.swift in Sources */,
+				251F2BBD278D804000AD9F0D /* WebViewRouter.swift in Sources */,
 				25510017278BC92F00A74D47 /* BInteractor.swift in Sources */,
 				25A5D810277C4750004FBD77 /* LogInBuilder.swift in Sources */,
 				2551000E278BC91900A74D47 /* AInteractor.swift in Sources */,
 				25A5D80E277C4750004FBD77 /* LogInRouter.swift in Sources */,
 				25A5D7F3277C454F004FBD77 /* AppComponent.swift in Sources */,
 				25510016278BC92F00A74D47 /* BBuilder.swift in Sources */,
+				251F2BBF278D804000AD9F0D /* WebViewBuilder.swift in Sources */,
 				25A5D826277C47F5004FBD77 /* LogOutRouter.swift in Sources */,
 				25A5D7ED277C44D8004FBD77 /* RootRouter.swift in Sources */,
 				25510014278BC92F00A74D47 /* BRouter.swift in Sources */,
@@ -407,6 +429,7 @@
 				25A5D80F277C4750004FBD77 /* LogInViewController.swift in Sources */,
 				25A5D82D277C484A004FBD77 /* UserDefaultsWorker.swift in Sources */,
 				2551000C278BC91900A74D47 /* AViewController.swift in Sources */,
+				251F2BC0278D804000AD9F0D /* WebViewInteractor.swift in Sources */,
 				25A5D811277C4750004FBD77 /* LogInInteractor.swift in Sources */,
 				25510015278BC92F00A74D47 /* BViewController.swift in Sources */,
 				25A61704277E9DBE00CC68DC /* ViewControllable+Navigate.swift in Sources */,
@@ -416,6 +439,7 @@
 				25510020278BC94000A74D47 /* CInteractor.swift in Sources */,
 				25A5D827277C47F5004FBD77 /* LogOutViewController.swift in Sources */,
 				2599CEAD2783D4D2002D5ECC /* RootActionableItem.swift in Sources */,
+				251F2BBE278D804000AD9F0D /* WebViewViewController.swift in Sources */,
 				25A5D7D6277C43DF004FBD77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

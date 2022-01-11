@@ -6,7 +6,6 @@
 //
 
 import RIBs
-import WebKit
 
 protocol RootInteractable: Interactable, LogOutListener, LogInListener {
     var router: RootRouting? { get set }
@@ -65,10 +64,6 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         self.loggedOut = loggedOut
         attachChild(loggedOut)
         viewController.presentViewController(viewController: loggedOut.viewControllable)
-    }
-    
-    func configureWebView() {
-        
     }
     
 }

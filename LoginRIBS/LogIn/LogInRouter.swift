@@ -67,5 +67,6 @@ final class LogInRouter: ViewableRouter<LogInInteractable, LogInViewControllable
         if let currentChild = currentChild {
             detachChild(currentChild)
         }
+        currentChild = nil
     }
 }
