@@ -12,7 +12,7 @@ protocol ADependency: Dependency {
     // created by this RIB.
 }
 
-final class AComponent: Component<ADependency> {
+final class AComponent: Component<ADependency>, WebViewDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -34,6 +34,10 @@ final class ABuilder: Builder<ADependency>, ABuildable {
         let viewController = AViewController()
         let interactor = AInteractor(presenter: viewController)
         interactor.listener = listener
-        return ARouter(interactor: interactor, viewController: viewController)
+        let webViewBuilder = WebViewBuilder(dependency: component)
+        return ARouter(
+            interactor: interactor,
+            viewController: viewController,
+            webViewBuilder: webViewBuilder)
     }
 }

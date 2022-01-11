@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-<!-- HTML Codes by Quackit.com -->
-<title>
-test</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {background-color:#669c35;background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
-h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
-p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
-</style>
-<style type="text/css">
-textarea.html-text-box {background-color:ffffff;background-repeat:no-repeat;background-attachment:fixed;border-width:1;border-style:solid;border-color:cccccc;font-family:Arial;font-size:8pt;color:000000;}
-input.html-text-box {background-color:ffffff;font-family:Arial;font-size:8pt;color:000000;}
-</style>
-<form method="post" action="">
-<textarea name="comments" cols="50" rows="10" class="html-text-box">enter text</textarea>
-<p><input type="submit" value="Submit" class="html-text-box"><input type="reset" value="Reset" class="html-text-box"></p>
-</form>
-</head>
-<body>
-<h1></h1>
-<p>test 1232453456</p>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <body>
+        <form>
+            <h1>Test Webview</h1>
+            <textarea class="textbox" id="textbox" cols="40" name="comments" rows="1" placeholder="Enter text here"></textarea>
+        <p>
+        <input type="button" id="Submit" value="Submit" /> <input type="reset" id="Reset" value="Reset" />
+        </p>
+        <p>
+        <output name="result"></output>
+        </form>
+        <script type="text/javascript">
+            var submitButton = document.getElementById("Submit");
+            submitButton.addEventListener("submit click", function(){
+                output.value = submitButton.value.concat("\n", output.value)
+            })
+            var resetButton = document.getElementById("Reset");
+            resetButton.addEventListener("reset click", function(){
+                resetButton.value = ""
+            })
+        </script>
+    </body>
 </html>

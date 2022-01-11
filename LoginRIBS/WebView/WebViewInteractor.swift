@@ -20,6 +20,7 @@ protocol WebViewPresentable: Presentable {
 
 protocol WebViewListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func hideWebView()
 }
 
 final class WebViewInteractor: PresentableInteractor<WebViewPresentable>, WebViewInteractable, WebViewPresentableListener {
@@ -46,5 +47,9 @@ final class WebViewInteractor: PresentableInteractor<WebViewPresentable>, WebVie
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func detach() {
+        listener?.hideWebView()
     }
 }

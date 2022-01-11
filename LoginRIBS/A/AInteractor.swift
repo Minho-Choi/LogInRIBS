@@ -10,6 +10,8 @@ import RxSwift
 
 protocol ARouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func attachWebView()
+    func detachWebView()
 }
 
 protocol APresentable: Presentable {
@@ -41,5 +43,13 @@ final class AInteractor: PresentableInteractor<APresentable>, AInteractable, APr
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func showWebView() {
+        router?.attachWebView()
+    }
+    
+    func hideWebView() {
+        router?.detachWebView()
     }
 }

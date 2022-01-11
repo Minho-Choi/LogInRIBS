@@ -13,6 +13,7 @@ protocol APresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
+    func showWebView()
 }
 
 final class AViewController: UIViewController, APresentable, AViewControllable {
@@ -35,9 +36,29 @@ final class AViewController: UIViewController, APresentable, AViewControllable {
         }()
         
         view.addSubview(label)
+        
+        let button: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle("Go Web", for: .normal)
+            button.backgroundColor = .systemGray
+            button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(webViewButtonDidTapped), for: .touchUpInside)
+            return button
+        }()
+        
+        view.addSubview(button)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 60)
         ])
+    }
+    
+    @objc
+    private func webViewButtonDidTapped() {
+        listener?.showWebView()
     }
 }
